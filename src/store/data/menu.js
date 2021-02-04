@@ -1,0 +1,23 @@
+export const menu =[
+    {
+        name:'laptop'
+    },
+    {
+        name:'computer',
+        expan:false,
+        submenu:[
+            {
+                name:'dell'
+            },
+            {
+                name:'samsung'
+            },
+            {
+                name:'hp'
+            }
+        ]
+    },
+    {
+        name:'mobile'
+    }
+]

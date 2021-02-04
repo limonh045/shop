@@ -1,32 +1,35 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <component :is="layout"></component>
   </div>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<script>
+// import "../src/assets/style.css";
+import user from "./layout/user";
+import Default from './layout/Default'
+import Dashboard from './layout/Dashboard'
+export default {
+  data: () => ({
+    
+  }),
+  components:{
+    user,
+    Default,
+    Dashboard
+  },
+  computed: {
+    layout() {
+      let layoutname = "default";
+      if (this.$route.meta && this.$route.meta.layout) {
+        layoutname = this.$route.meta.layout;
+      }
+      return layoutname;
+    },
+    
+  },
+  mounted(){
+    this.$store.dispatch('getmenu')
+  }
+};
+</script>
+<style></style>
